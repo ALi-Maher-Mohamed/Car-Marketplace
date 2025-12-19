@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pages/auth.css">
+    <link rel="stylesheet" href="/css/components/error.css">
+    <title>Register</title>
+</head>
+
+<body>
+
+    <div class="auth-card" >
+        <h3>Join AutoMarket</h3>
+        <p>Find and finance your dream car</p>
+
+        <form id="registerForm" novalidate>
+            <div id="formError" class="form-error"></div>
+
+            <div>
+                <label for="username">Full name</label>
+                <input type="text" id="username" name="username" placeholder="e.g John Doe" >
+            </div>
+            <div>
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="name@company.com" >
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" >
+
+                <label for="confirm"> confirm</label>
+                <input type="password" id="confirm" name="confirm" placeholder="••••••••" >
+            </div>
+
+            <div class="form-options">
+                <div>
+                    <input type="checkbox" id="terms" name="terms">
+                    <label for="terms">I agree to the terms and conditions</label>
+                </div>
+            </div>
+
+            <button type="submit">Create Account</button>
+
+            <div class="social-login">
+                <p>Or continue with</p>
+                <button type="button">Google</button>
+            </div>
+        </form>
+
+        <p>
+            Already have an account?
+            <a href="/pages/auth/login.html">Sign in</a>
+        </p>
+    </div>
+
+    <script src="/js/pages/register.js" defer></script>
+    <script src="/js/components/error.js" defer></script>
+</body>
+
+</html>

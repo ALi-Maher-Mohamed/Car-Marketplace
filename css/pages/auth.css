@@ -1,0 +1,202 @@
+/* ===============================
+   RESET & BASE
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f7f7f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===============================
+   AUTH CARD
+================================ */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+/* ===============================
+   HEADINGS & TEXT
+================================ */
+.auth-card h3 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.auth-card p {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* ===============================
+   FORM
+================================ */
+form {
+    text-align: left;
+}
+
+form > div {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* ===============================
+   OPTIONS ROW
+================================ */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.form-options label {
+    margin: 0;
+    font-weight: 400;
+}
+
+.form-options a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-options a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+button[type="submit"] {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+}
+
+/* ===============================
+   SOCIAL LOGIN
+================================ */
+.social-login {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.social-login p {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.social-login p::before,
+.social-login p::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.social-login p::before {
+    left: 0;
+}
+
+.social-login p::after {
+    right: 0;
+}
+
+.social-login button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.social-login button:hover {
+    background: #f3f4f6;
+}
+
+/* ===============================
+   FOOTER TEXT
+================================ */
+.auth-card > p:last-child {
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+.auth-card > p:last-child a {
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-card > p:last-child a:hover {
+    text-decoration: underline;
+}
