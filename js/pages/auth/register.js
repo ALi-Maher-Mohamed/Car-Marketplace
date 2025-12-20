@@ -1,6 +1,4 @@
 
-
-// ELEMENTS
 const registerForm = document.getElementById("registerForm");
 const usernameInput = document.getElementById("username");
 const emailInput = document.getElementById("email");
@@ -12,16 +10,6 @@ const termsCheckbox = document.getElementById("terms");
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
-
-function saveAuthData() {
-    // fake auth data (UI only)
-    localStorage.setItem("token", "ui-demo-token");
-    localStorage.setItem("user", JSON.stringify({
-        name: usernameInput.value.trim(),
-        email: emailInput.value.trim()
-    }));
-}
-
 
 registerForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -64,8 +52,17 @@ registerForm.addEventListener("submit", function (e) {
         return;
     }
 
-    // Fake success
-    saveAuthData();
+    clearAuthData();
+
+    // Fake register success (UI only)
+    saveAuthData({
+        token: "ui-demo-token",
+        user: {
+            name: username,
+            email: email
+        },
+        remember: true // Register always LocalStorage
+    });
 
     // Redirect after register
     window.location.href = "/pages/cars/listing.html";

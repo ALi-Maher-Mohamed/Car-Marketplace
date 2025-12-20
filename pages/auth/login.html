@@ -15,7 +15,7 @@
         <h3>Log in to your account</h3>
         <p>Welcome back! Please enter your details to access your saved cars</p>
 
-        <form id="loginForm" novalidate>
+        <form  id="loginForm" method="post" novalidate>
             <div id="formError" class="form-error"></div>
 
             <div>
@@ -33,7 +33,7 @@
                     <input type="checkbox" id="remember" name="remember">
                     <label for="remember">Remember me</label>
                 </div>
-                <a href="/auth/forgot-password.html">Forgot password?</a>
+                <a href="#">Forgot password?</a>
             </div>
 
             <button type="submit">Sign in</button>
@@ -51,7 +51,8 @@
         </p>
     </div>
 
-    <script src="/js/pages/login.js" defer></script>
+    <script src="/js/pages/auth/login.js" defer></script>
+    <script src="/js/utils/auth.js" defer></script>
     <script src="/js/components/error.js" defer></script>
 </body>
 

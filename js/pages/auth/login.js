@@ -1,33 +1,12 @@
-
-// ELEMENTS
 const loginForm = document.getElementById("loginForm");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const rememberCheckbox = document.getElementById("remember");
 
 
-
-function saveAuthData(remember) {
-    const fakeToken = "ui-demo-token";
-
-    if (remember) {
-        localStorage.setItem("token", fakeToken);
-        localStorage.setItem("user", JSON.stringify({
-        email: emailInput.value.trim()
-    }));
-    } else {
-        sessionStorage.setItem("token", fakeToken);
-        sessionStorage.setItem("user", JSON.stringify({
-        email: emailInput.value.trim()
-    }));
-    }
-}
-
-
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
-
 
 loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -49,14 +28,13 @@ loginForm.addEventListener("submit", function (e) {
         return;
     }
 
-    // Password length (UI rule)
-    if (password.length < 6) {
-        showFormError("Password must be at least 6 characters");
-        return;
-    }
+    clearAuthData(); 
 
-    // Fake login success
-    saveAuthData(rememberMe);
+    saveAuthData({
+        token: "ui-demo-token",
+        user: { email },
+        remember: rememberMe
+    });
 
     // Redirect
     window.location.href = "/pages/cars/listing.html";
