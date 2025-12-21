@@ -37,5 +37,5 @@ loginForm.addEventListener("submit", function (e) {
     });
 
     // Redirect
-    window.location.href = "/pages/cars_landing/index.html";
+    window.location.href = ROUTES.CARS_LANDING;
 });
