@@ -41,10 +41,34 @@ function buildPage() {
 
     // Auth Buttons
     const auth = el('div', 'flex items-center gap-3');
-    auth.appendChild(el('button', 'hidden sm:flex items-center justify-center h-9 px-4 rounded-lg bg-[#f0f2f4] dark:bg-gray-800 text-[#111318] dark:text-white text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors', {}, 'Log In'));
-    auth.appendChild(el('button', 'flex items-center justify-center h-9 px-4 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md', {}, 'Sign Up'));
-    navFlex.appendChild(auth);
 
+    const loginBtn = el(
+        'button',
+        'hidden sm:flex items-center justify-center h-9 px-4 rounded-lg bg-[#f0f2f4] dark:bg-gray-800 text-[#111318] dark:text-white text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors',
+        {},
+        'Log In'
+    );
+
+    const signupBtn = el(
+        'button',
+        'flex items-center justify-center h-9 px-4 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md',
+        {},
+        'Sign Up'
+    );
+
+    // Redirects
+    loginBtn.addEventListener("click", () => {
+        window.location.href = ROUTES.LOGIN;
+    });
+
+    signupBtn.addEventListener("click", () => {
+        window.location.href = ROUTES.REGISTER;
+    });
+
+    auth.appendChild(loginBtn);
+    auth.appendChild(signupBtn);
+
+    navFlex.appendChild(auth);
     navContainer.appendChild(navFlex);
     nav.appendChild(navContainer);
     app.appendChild(nav);
@@ -228,54 +252,7 @@ function buildPage() {
     app.appendChild(cta);
 
     // ===== Footer =====
-    const footer = el('footer', 'bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 pt-16 pb-8');
-    const footerContainer = el('div', 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8');
-    const footerGrid = el('div', 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12');
-
-    // Brand
-    const brand = el('div', 'flex flex-col gap-4');
-    brand.appendChild(el('div', 'flex items-center gap-2 mb-2', {}, '', [icon('directions_car', 'text-primary text-3xl'), el('h2', 'text-xl font-bold tracking-tight text-[#111318] dark:text-white', {}, 'CarMarket')]));
-    brand.appendChild(el('p', 'text-gray-500 dark:text-gray-400 text-sm leading-relaxed', {}, 'The most trusted marketplace for buying and selling cars online. Fast, secure, and transparent.'));
-    footerGrid.appendChild(brand);
-
-    // Marketplace Links
-    const marketplace = el('div');
-    marketplace.appendChild(el('h4', 'font-bold text-[#111318] dark:text-white mb-6', {}, 'Marketplace'));
-    const ul1 = el('ul', 'flex flex-col gap-3 text-sm text-gray-500 dark:text-gray-400');
-    ['Browse Cars', 'Sell Your Car', 'Car Valuation', 'Certified Pre-Owned'].forEach(link => ul1.appendChild(el('li', '', {}, '', [el('a', 'hover:text-primary transition-colors', { href: '#' }, link)])));
-    marketplace.appendChild(ul1);
-    footerGrid.appendChild(marketplace);
-
-    // Company Links
-    const company = el('div');
-    company.appendChild(el('h4', 'font-bold text-[#111318] dark:text-white mb-6', {}, 'Company'));
-    const ul2 = el('ul', 'flex flex-col gap-3 text-sm text-gray-500 dark:text-gray-400');
-    ['About Us', 'Careers', 'Press', 'Contact'].forEach(link => ul2.appendChild(el('li', '', {}, '', [el('a', 'hover:text-primary transition-colors', { href: '#' }, link)])));
-    company.appendChild(ul2);
-    footerGrid.appendChild(company);
-
-    // Newsletter
-    const newsletter = el('div');
-    newsletter.appendChild(el('h4', 'font-bold text-[#111318] dark:text-white mb-6', {}, 'Stay Updated'));
-    newsletter.appendChild(el('p', 'text-sm text-gray-500 dark:text-gray-400 mb-3', {}, 'Subscribe to our newsletter for the latest updates.'));
-    const form = el('div', 'flex gap-2');
-    form.appendChild(el('input', 'w-full h-10 rounded-lg border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm px-3 focus:ring-2 focus:ring-primary focus:border-transparent', { type: 'email', placeholder: 'Email address' }));
-    form.appendChild(el('button', 'size-10 rounded-lg bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors', {}, '', [icon('arrow_forward', 'text-lg')]));
-    newsletter.appendChild(form);
-    footerGrid.appendChild(newsletter);
-
-    footerContainer.appendChild(footerGrid);
-
-    // Bottom bar
-    const bottom = el('div', 'border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4');
-    bottom.appendChild(el('p', 'text-sm text-gray-400 text-center md:text-left', {}, '© 2024 CarMarket Inc. All rights reserved.'));
-
-    const social = el('div', 'flex gap-6');
-    bottom.appendChild(social);
-
-    footerContainer.appendChild(bottom);
-    footer.appendChild(footerContainer);
-    app.appendChild(footer);
+    app.appendChild(buildFooter());
 }
 
 document.addEventListener('DOMContentLoaded', buildPage);
