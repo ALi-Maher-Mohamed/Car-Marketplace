@@ -42,4 +42,12 @@ function requireAuth(redirectTo = ROUTES.LOGIN) {
 
 function logout() {
     clearAuthData();
+
+    localStorage.removeItem('cars');
+    // reset in-memory data
+    if (typeof Data !== 'undefined') {
+        Data = [];
+    }
+
+    
 }

@@ -68,7 +68,7 @@
             <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Research</a>
           </nav>
           <div class="flex items-center gap-2 sm:gap-3">
-            <button
+            <button onclick="window.location.href = ROUTES.WISHLIST"
               class="hidden sm:flex items-center justify-center size-10 rounded-lg bg-[#f0f2f4] dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-[#111318] dark:text-white">
               <span class="material-symbols-outlined text-[20px]">favorite</span>
             </button>
@@ -157,7 +157,7 @@
                   <span class="ml-auto text-xs text-gray-400">(45)</span>
                 </label>
                 <label class="flex items-center gap-3 cursor-pointer group/item">
-                  <input checked=""
+                  <input
                     class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary"
                     type="checkbox" />
                   <span
@@ -252,8 +252,7 @@
             </h1>
             <p class="text-[#616f89] dark:text-gray-400">
               Showing
-              <span id="results-count" class="font-bold text-[#111318] dark:text-white">0</span>
-              results for "All Cars"
+              
             </p>
           </div>
           <div class="flex items-center gap-3 w-full md:w-auto">

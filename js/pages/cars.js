@@ -9,14 +9,22 @@ function createCarCard(car) {
     var description = car.description.substring(0, 30) + '...';
     var price = '$' + car.price;
     var detailsUrl = '/pages/cars_landing/car-details.html?id=' + car.id;
-
+   
     var html = '<div class="group flex flex-col bg-white dark:bg-[#1a202c] rounded-xl border border-[#dbdfe6] dark:border-gray-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">';
     html += '<div class="relative h-48 w-full overflow-hidden">';
     html += '<img class="h-full w-full object-cover" src="' + image + '" />';
     html += '<div class="absolute top-3 right-3">';
-    html += '<button class="flex items-center justify-center size-8 rounded-full bg-white/90 text-gray-500 hover:text-red-500">';
-    html += '<span class="material-symbols-outlined text-[20px]">favorite</span>';
-    html += '</button></div></div>';
+    // onClick to toggle favorite and change favoriteClass
+    html += '<button '
+        + 'class="flex items-center justify-center size-8 rounded-full bg-white/90 rounded-full" '
+        + 'onclick="toggleFavorite(' + car.id + ', this)">';
+
+    html += '<span class="material-symbols-outlined text-[20px] '
+        + (car.isFavorite ? 'text-red-500' : 'text-gray-400')
+        + '">favorite</span>';
+
+    html += '</button>';
+    html += '</div></div>';
     html += '<div class="p-4 flex flex-col flex-1">';
     html += '<h3 class="text-lg font-bold text-[#111318] dark:text-white mb-1">' + title + '</h3>';
     html += '<p class="text-sm text-[#616f89] mb-3">' + description + '</p>';
@@ -40,6 +48,7 @@ function createCarCard(car) {
 
 
 function renderCars() {
+    console.log(allCars);
     var container = document.getElementById('cars-grid');
 
 
@@ -53,7 +62,6 @@ function renderCars() {
     }
 
     container.innerHTML = html;
-    document.getElementById('results-count').textContent = allCars.length;
     document.getElementById('page-number').textContent = currentPage;
 
 
@@ -79,6 +87,8 @@ function nextPage() {
     }
 }
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
     allCars = getAllCars();
     renderCars();
@@ -86,6 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('auth-buttons').appendChild(buildAuthButtons());
 
     document
-      .getElementById('footer-container')
-      .appendChild(buildFooter());
+        .getElementById('footer-container')
+        .appendChild(buildFooter());
 });

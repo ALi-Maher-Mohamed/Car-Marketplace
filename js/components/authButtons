@@ -57,9 +57,9 @@ function buildAuthButtons() {
         window.location.href = ROUTES.CARS_LANDING;
     });
 
-    accountBtn.addEventListener("click", () => {
-        window.location.href = ROUTES.PROFILE || '/profile.html';
-    });
+    // accountBtn.addEventListener("click", () => {
+    //     window.location.href = ROUTES.PROFILE || '/profile.html';
+    // });
 
     // Auth Logic
     if (isAuthenticated()) {

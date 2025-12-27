@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AutoMarket - Find Your Dream Car</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Config -->
+    <script src="/js/utils/config.js"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /*Custom scrollbar for sidebar if needed */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-[#111318] dark:text-white">
+    <!-- Top Navigation -->
+    <header
+        class="sticky top-0 z-50 bg-white dark:bg-[#1a202c] border-b border-[#f0f2f4] dark:border-gray-800 shadow-sm">
+        <div class="max-w-[1440px] mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-16 gap-4">
+                <!-- Logo -->
+                <a class="flex items-center gap-3 text-[#111318] dark:text-white flex-shrink-0" href="#">
+                    <div class="size-8 text-primary">
+                        <span class="material-symbols-outlined text-[32px] fill-1">directions_car</span>
+                    </div>
+                    <h2 class="text-xl font-bold tracking-tight" onclick="window.location.href=ROUTES.CARS_LANDING">
+                        AutoMarket
+                    </h2>
+                </a>
+                <!-- Search Bar (Hidden on mobile, visible on lg) -->
+                <div class="hidden lg:flex flex-1 max-w-lg mx-8">
+                    <label
+                        class="flex w-full items-stretch rounded-lg h-10 border border-[#dbdfe6] dark:border-gray-700 bg-[#f0f2f4] dark:bg-gray-800 overflow-hidden group focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent">
+                        <div class="flex items-center justify-center pl-3 pr-2 text-[#616f89] dark:text-gray-400">
+                            <span class="material-symbols-outlined text-[20px]">search</span>
+                        </div>
+                        <input
+                            class="w-full bg-transparent border-none focus:ring-0 text-sm text-[#111318] dark:text-white placeholder-[#616f89]"
+                            placeholder="Search by make, model, or keyword..." value="" />
+                    </label>
+                </div>
+                <!-- Right Actions -->
+                <div class="flex items-center gap-4 sm:gap-6">
+                    <nav class="hidden md:flex items-center gap-6">
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Buy</a>
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Sell</a>
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Research</a>
+                    </nav>
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <button
+                            class="hidden sm:flex items-center justify-center size-10 rounded-lg bg-[#f0f2f4] dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-[#111318] dark:text-white">
+                            <span class="material-symbols-outlined text-[20px]">favorite</span>
+                        </button>
+
+                        <div id="auth-buttons"></div>
+
+                        </script>
+
+                        <!-- Mobile Menu Toggle -->
+                        <button
+                            class="lg:hidden flex items-center justify-center size-10 rounded-lg text-[#111318] dark:text-white">
+                            <span class="material-symbols-outlined text-[24px]">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content Area -->
+    <section class="w-full px-6 py-10">
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-3xl font-black">Your Garage</h1>
+                <p class="text-gray-500">Manage your shortlisted vehicles</p>
+            </div>
+
+
+        </div>
+
+        <div id="favorites-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        </div>
+    </section>
+
+
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script src="/js/utils/api.js"></script>
+    <script src="/js/utils/routes.js"></script>
+    <script src="/js/utils/auth.js" defer></script>
+    <script src="/js/components/authButtons" defer></script>
+    <script src="/js/utils/icon.js"></script>
+    <script src="/js/utils/elment.js"></script>
+    <script src="/js/components/footer.js"></script>
+    <script src="/js/pages/cars.js"></script>
+    <script src="/js/pages/cars_landing/wishlist.js"></script>
+
+</body>
+
+</html>
