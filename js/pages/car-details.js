@@ -1,4 +1,10 @@
 
+var dealer = {
+    name: 'AutoNation West',
+    location: 'San Francisco, CA',
+    memberSince: '2018',
+    mapEmbed: 'https://www.google.com/maps?q=San+Francisco&output=embed'
+};
 
 
 function getCarIdFromUrl() {
@@ -15,6 +21,47 @@ function getCarById(id) {
         }
     }
     return null;
+}
+
+function buildDealerCard(dealer) {
+    var card = el('div', 'bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-5 space-y-4');
+
+    // Header
+    var header = el('div', 'flex items-center gap-4');
+    var avatar = el('div', 'w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center');
+    avatar.appendChild(icon('person', 'text-primary'));
+
+    var info = el('div');
+    info.appendChild(el('h4', 'font-bold', {}, dealer.name));
+    info.appendChild(el('p', 'text-sm text-gray-500 flex items-center gap-1', {}, '📍 ' + dealer.location));
+
+    header.appendChild(avatar);
+    header.appendChild(info);
+
+    // Member + chat
+    var actions = el('div', 'flex items-center justify-between text-sm');
+    actions.appendChild(el('span', 'text-gray-400', {}, 'Member since ' + dealer.memberSince));
+
+    var chatBtn = el('button', 'text-primary font-semibold hover:underline flex items-center gap-1');
+    chatBtn.appendChild(icon('chat', 'text-base'));
+    chatBtn.appendChild(el('span', '', {}, 'Chat with Dealer'));
+
+    actions.appendChild(chatBtn);
+
+    // Map
+    var mapWrapper = el('div', 'rounded-lg overflow-hidden h-40');
+    var map = document.createElement('iframe');
+    map.src = dealer.mapEmbed;
+    map.className = 'w-full h-full border-0';
+    map.loading = 'lazy';
+
+    mapWrapper.appendChild(map);
+
+    card.appendChild(header);
+    card.appendChild(actions);
+    card.appendChild(mapWrapper);
+
+    return card;
 }
 
 
@@ -63,8 +110,8 @@ function renderCarDetails(car) {
         imageSection.appendChild(gallery);
     }
 
+    imageSection.appendChild(buildDealerCard(dealer));
     container.appendChild(imageSection);
-
 
     var detailsSection = el('div', 'space-y-6');
 
@@ -130,14 +177,33 @@ function renderCarDetails(car) {
     contactBtn.appendChild(icon('call', 'text-xl'));
     contactBtn.appendChild(el('span', '', {}, 'Contact Seller'));
 
-    var favoriteBtn = el('button', 'h-12 px-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2');
-    favoriteBtn.appendChild(icon('favorite', 'text-xl text-gray-400'));
+    var favoriteBtn = el(
+        'button',
+        'h-12 px-4 border border-gray-200 rounded-xl flex items-center justify-center'
+    );
+
+    var favIcon = icon(
+        'favorite',
+        'text-xl ' + (car.isFavorite ? 'text-red-500' : 'text-gray-400')
+    );
+
+    favoriteBtn.appendChild(favIcon);
+
+    favoriteBtn.onclick = function () {
+        toggleFavorite(car.id, favoriteBtn);
+    };
+
 
     actions.appendChild(contactBtn);
     actions.appendChild(favoriteBtn);
     detailsSection.appendChild(actions);
 
+    // detailsSection.appendChild(buildDealerCard(dealer));
+
     container.appendChild(detailsSection);
+
+
+
 }
 
 
@@ -152,6 +218,7 @@ function init() {
     } else {
         renderCarDetails(null);
     }
+
 
 
 
